@@ -11,7 +11,7 @@ Boot loader uses following flash memory arrangement:
 **0x000**	Reset vector to write protected Boot code segment.  
 **0x004**	Interrupts vector table with vectors to first page of General (user) code section  
 **0x104**	Alternate vector table with same vectors as main interrupts vector table  
-**0x200** 	Boot code segment that is write protected by configuration bits.
+**0x200** 	Boot code segment that is write protected by configuration bits  
 **0xB00**	First page of General code section with BRA instructions to user defined interrupt functions or default interrupt function provided by XC16 compiler. Instead of GOTO instruction that uses two program words branch instruction with one program word is used. It reduces interrupt ‘jump’ vector table size but limits possible locations of user defined interrupt functions to first 32 Kb of flash memory  
 **0xC00**	User uploaded code
 

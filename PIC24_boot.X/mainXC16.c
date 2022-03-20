@@ -108,7 +108,7 @@ int main() {
                 break;
                 
             /*
-             * COMMAND_READ_ID or COMMAND_READ_VERS are be first commands
+             * COMMAND_READ_ID or COMMAND_READ_VERS are initial commands
              * received from bootloader utility to start update operation
              */
 
@@ -190,7 +190,7 @@ void cleanExit() {
 /* UART receive and send functions */
 
 unsigned int readChar() {
-	// check if character is received over UART
+    // check if character is received over UART
     if (U1STAbits.FERR) {
         __builtin_nop();
         __asm__ volatile ("reset");
