@@ -23,7 +23,7 @@ int main() {
     U1BRG = 25; // +0.16% error in actual baud rate
     U1MODE = 0x8008; // 8 bit no parity one stop bit; BRGH bit set
     
-    // Setup Timer2 for 0.5 seconds period to exit bootloader
+    // Setupï¿½Timer2 for 0.5 seconds period to exit bootloader
     T2CON = 0x0020; // Timer clock 1:64 Fosc/2 (62.5 kHz)
     PR2 = 31250;
     _T2IF = 0;
@@ -108,12 +108,14 @@ int main() {
                 break;
                 
             /*
-             * COMMAND_READ_ID or COMMAND_READ_VERS are be first commands
+             * COMMAND_READ_ID or COMMAND_READ_VERS are initial commands
              * received from bootloader utility to start update operation
              */
 
-            case COMMAND_READ_ID: /* read Device ID  */
+            case COMMAND_READ_ID: /* read device id  */
                 // PIC24F16KA301 : 0x4508 0x0007
+                // PIC24F16KA301 : 0x4518 0x000?
+                // PIC24F16KA302 : 0x4502 0x000?
                 // PIC24F32KA302 : 0x4512 0x0007
                 T2CONbits.TON = 0; // stop timeout timer
                 TBLPAG = 0xFF;
@@ -138,7 +140,7 @@ int main() {
                 sendChar(COMMAND_ACK);
                 break;
 
-            case COMMAND_RESET: /* Reset to user application */
+            case COMMAND_RESET: /* reset to user application */
                 __asm__ volatile ("reset");
                 break;
 
@@ -190,7 +192,7 @@ void cleanExit() {
 /* UART receive and send functions */
 
 unsigned int readChar() {
-	// check if character is received over UART
+    // check if character is received over UART
     if (U1STAbits.FERR) {
         __builtin_nop();
         __asm__ volatile ("reset");
