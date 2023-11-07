@@ -1,8 +1,8 @@
 
 /* 
- * Bully bootloader utility sends program data as
- * page of 4 x 32 program words. Flash memory is
- * programmed by rows of 32 program words.
+ * Bully bootloader utility sends flash data for
+ * PIC24FK devices in pages of 32 x 4 program words. 
+ * Flash memory is programmed by rows of 32 program words.
  * 
  * Each instruction takes two memory addresses and
  * uses three bytes with top addressed byte unused.

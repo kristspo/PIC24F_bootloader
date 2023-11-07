@@ -37,14 +37,14 @@ void write_buf_pgm(register unsigned int offset, unsigned int count) {
 
 void write_buf_eem(register unsigned int offset, unsigned int count) {
     register unsigned int z = count;
-    unsigned int * ptr = (unsigned int *) pgm_buff;
 
     // TBLPAG register is already set in calling function
     NVMCON = 0x4004; // Write EEPROM word with erase-before-write
     while (z) {
-        // z has count of words to write with two bytes per EEPROM word in buffer
-        register unsigned int wr = ptr[--z];
-        if (wr != 0xFFFF) {
+        // z has count of bytes in buffer
+        register unsigned int wr = pgm_buff[--z];
+        wr |= (pgm_buff[--z] << 8);
+        if (wr != __builtin_tblrdl(offset)) {
             __builtin_tblwtl(offset, wr);
             asm volatile ("disi #5");
             __builtin_write_NVM();

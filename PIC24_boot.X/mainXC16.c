@@ -23,7 +23,7 @@ int main() {
     U1BRG = 25; // +0.16% error in actual baud rate
     U1MODE = 0x8008; // 8 bit no parity one stop bit; BRGH bit set
     
-    // Setup�Timer2 for 0.5 seconds period to exit bootloader
+    // Setup Timer2 for 0.5 seconds period to exit bootloader
     T2CON = 0x0020; // Timer clock 1:64 Fosc/2 (62.5 kHz)
     PR2 = 31250;
     _T2IF = 0;
@@ -60,7 +60,7 @@ int main() {
                 }
                 if (addr.w32 <= (EEM_ADDR_TOP - (EEM_PAGE_COUNT * 2))) {
                     TBLPAG = addr.hw;
-                    write_buf_eem(addr.lw, EEM_PAGE_COUNT);
+                    write_buf_eem(addr.lw, EEM_PAGE_BYTES);
                 }
                 sendChar(COMMAND_ACK);
                 break;
@@ -192,7 +192,7 @@ void cleanExit() {
 /* UART receive and send functions */
 
 unsigned int readChar() {
-    // check if character is received over UART
+	// check if character is received over UART
     if (U1STAbits.FERR) {
         __builtin_nop();
         __asm__ volatile ("reset");
