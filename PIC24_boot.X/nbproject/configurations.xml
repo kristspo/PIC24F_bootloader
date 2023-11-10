@@ -5,8 +5,9 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="config_bits" displayName="config_bits" projectFiles="true">
-        <itemPath>config_bits/p24F16KA301.h</itemPath>
-        <itemPath>config_bits/p24F32KA302.h</itemPath>
+        <itemPath>config_bits/p24F16KA10x.h</itemPath>
+        <itemPath>config_bits/p24F16KA30x.h</itemPath>
+        <itemPath>config_bits/p24F32KA30x.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"

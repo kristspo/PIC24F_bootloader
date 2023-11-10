@@ -1,5 +1,5 @@
 /*
- * Linker script for PIC24F16KA301
+ * Linker script for PIC24F32KA301
  * (c) Copyright 2013 Microchip Technology, Inc
  *
  * This software is developed by Microchip Technology Inc. and its
@@ -32,12 +32,12 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
- 
+
 /*
  * Modified by KPT for PIC24 bootloader version 3.10
  */
 
-OUTPUT_ARCH("24F16KA301")
+OUTPUT_ARCH("24F32KA301")
 CRT0_STARTUP(crt0_standard.o)
 CRT1_STARTUP(crt1_standard.o)
 #if __XC16_VERSION__ > 1027
@@ -88,7 +88,7 @@ __FDS = 0xF80010;
 
 __NO_HANDLES = 1;          /* Suppress handles on this device  */
 __CODE_BASE = 0x200;
-__CODE_LENGTH = 0x2A00;
+__CODE_LENGTH = 0x5600;
 __IVT_BASE  = 0x4;
 __AIVT_BASE = 0x104;
 __DATA_BASE = 0x800;

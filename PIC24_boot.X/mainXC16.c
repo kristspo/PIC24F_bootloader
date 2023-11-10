@@ -15,8 +15,20 @@ int main() {
     // RB7 UART1 TX output preset high
     LATBbits.LATB7 = 1;
     TRISBbits.TRISB7 = 0;
+#ifdef ANSB
     // RB2 UART1 RX disable analog input
     ANSBbits.ANSB2 = 0;
+#else
+    /* Devices with 10 bit ADC configure pin analog function in AD1PCFG register.
+     * 28 pin PIC24FxxKA102 has AN4 channel on RB2 pin that needs to be disabled.
+     * 20 pin PIC24FxxKA101 does not have analog function on RB2 pin.
+     */
+#if defined(__PIC24F08KA102__) || defined(__PIC24F16KA102__)
+    AD1PCFGbits.PCFG4 = 1;
+#else
+    __builtin_nop();
+#endif
+#endif
 
     // Setup UART1 for 38400 baud rate
     // BRG value with BRGH set is: (4 000 000 / (4 * baudrate)) - 1

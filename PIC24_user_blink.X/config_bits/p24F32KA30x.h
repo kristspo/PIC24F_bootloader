@@ -1,5 +1,5 @@
 
-// PIC24F16KA301 Configuration Bit Settings
+// PIC24F32KA30x Configuration Bit Settings
 
 // FBS
 #pragma config BWRP = ON                // Table Write Protect Boot (Boot segment is write-protected)

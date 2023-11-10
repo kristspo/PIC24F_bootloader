@@ -1,5 +1,5 @@
 /*
- * Linker script for PIC24F16KA301
+ * Linker script for PIC24F32KA304
  * (c) Copyright 2013 Microchip Technology, Inc
  *
  * This software is developed by Microchip Technology Inc. and its
@@ -37,7 +37,7 @@
  * Modified by KPT for PIC24 bootloader version 3.10
  */
 
-OUTPUT_ARCH("24F16KA301")
+OUTPUT_ARCH("24F32KA304")
 CRT0_STARTUP(crt0_standard.o)
 CRT1_STARTUP(crt1_standard.o)
 #if __XC16_VERSION__ > 1027
@@ -88,7 +88,7 @@ __FDS = 0xF80010;
 
 __NO_HANDLES = 1;          /* Suppress handles on this device  */
 __CODE_BASE = 0x200;
-__CODE_LENGTH = 0x2A00;
+__CODE_LENGTH = 0x5600;
 __IVT_BASE  = 0x4;
 __AIVT_BASE = 0x104;
 __DATA_BASE = 0x800;
@@ -756,6 +756,7 @@ _CNPD2        = 0x58;
 _CNPD2bits    = 0x58;
  CNPD3        = 0x5A;
 _CNPD3        = 0x5A;
+_CNPD3bits    = 0x5A;
  CNEN1        = 0x62;
 _CNEN1        = 0x62;
 _CNEN1bits    = 0x62;
@@ -764,6 +765,7 @@ _CNEN2        = 0x64;
 _CNEN2bits    = 0x64;
  CNEN3        = 0x66;
 _CNEN3        = 0x66;
+_CNEN3bits    = 0x66;
  CNPU1        = 0x6E;
 _CNPU1        = 0x6E;
 _CNPU1bits    = 0x6E;
@@ -772,6 +774,7 @@ _CNPU2        = 0x70;
 _CNPU2bits    = 0x70;
  CNPU3        = 0x72;
 _CNPU3        = 0x72;
+_CNPU3bits    = 0x72;
  INTCON1      = 0x80;
 _INTCON1      = 0x80;
 _INTCON1bits  = 0x80;
@@ -1076,6 +1079,18 @@ _LATBbits     = 0x2CC;
  ODCB         = 0x2CE;
 _ODCB         = 0x2CE;
 _ODCBbits     = 0x2CE;
+ TRISC        = 0x2D0;
+_TRISC        = 0x2D0;
+_TRISCbits    = 0x2D0;
+ PORTC        = 0x2D2;
+_PORTC        = 0x2D2;
+_PORTCbits    = 0x2D2;
+ LATC         = 0x2D4;
+_LATC         = 0x2D4;
+_LATCbits     = 0x2D4;
+ ODCC         = 0x2D6;
+_ODCC         = 0x2D6;
+_ODCCbits     = 0x2D6;
  PADCFG1      = 0x2FC;
 _PADCFG1      = 0x2FC;
 _PADCFG1bits  = 0x2FC;
@@ -1169,6 +1184,12 @@ _ANSBbits     = 0x4E2;
  ANSELB       = 0x4E2;
 _ANSELB       = 0x4E2;
 _ANSELBbits   = 0x4E2;
+ ANSC         = 0x4E4;
+_ANSC         = 0x4E4;
+_ANSCbits     = 0x4E4;
+ ANSELC       = 0x4E4;
+_ANSELC       = 0x4E4;
+_ANSELCbits   = 0x4E4;
  ALRMVAL      = 0x620;
 _ALRMVAL      = 0x620;
  ALCFGRPT     = 0x622;

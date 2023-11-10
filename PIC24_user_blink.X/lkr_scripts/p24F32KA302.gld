@@ -1,7 +1,6 @@
 /*
  * Linker script for PIC24F32KA302
  * (c) Copyright 2013 Microchip Technology, Inc
- * Part support version 1.70.A(02-Mar-2021)
  *
  * This software is developed by Microchip Technology Inc. and its
  * subsidiaries ("Microchip").
@@ -65,7 +64,7 @@ MEMORY
   ivt            : ORIGIN = 0x4,           LENGTH = 0xFC
   _reserved      : ORIGIN = 0x100,         LENGTH = 0x4
   aivt           : ORIGIN = 0x104,         LENGTH = 0xFC
-  j_ivt          : ORIGIN = 0xB00,         LENGTH = 0x200
+  j_ivt          : ORIGIN = 0xB00,         LENGTH = 0x100
   program (xr)   : ORIGIN = 0xC00,         LENGTH = 0x4C00
   eedata         : ORIGIN = 0x7FFE00,      LENGTH = 0x200
   FBS            : ORIGIN = 0xF80000,      LENGTH = 0x2
@@ -95,6 +94,8 @@ __IVT_BASE  = 0x4;
 __AIVT_BASE = 0x104;
 __DATA_BASE = 0x800;
 __DATA_LENGTH = 0x800;
+__EEDATA_BASE = 0x7FFE00;
+__EEDATA_LENGTH = 0x200;
 
 
 /*
@@ -283,11 +284,6 @@ SECTIONS
 INCLUDE lkr_scripts/jvect_pic24f.h
 
 #if 1 /* removed: __XC16_VERSION < 1026 */
-/*
-** These definitions are not required for XC16 versions
-** later than XC16 v1.25 as the linker defines the addresses.
-**
-*/
 /*
 ** Section Map for Interrupt Vector Tables
 */
@@ -695,7 +691,6 @@ SECTIONS
 
 } /* SECTIONS */
 #endif
-
 
 /*
 ** ============== Equates for SFR Addresses =============
