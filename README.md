@@ -1,9 +1,11 @@
 ### Boot loader for PIC24F micro controllers
 Boot loader is based on [PIC24 Bully boot loader](https://sites.google.com/site/pic24micro/Home/pic24-software-library-collection/pic24-bully-bootloader) but code is rewritten from scratch and linker scripts re-created. New boot loader implements write protected Boot code segment configuration of PIC24F micro controllers. This prevents any possibility to re-write or erase boot loader or micro controller configuration by boot loader itself or uploaded user code. The code does not use additional library functions and is quite compact. ISR functions are not used, so they can be defined in user code. The size of runtime startup code is further reduced by linker configuration in boot loader MPLAB X project.
 
-There are two MPLAB X projects:  
-**PIC24_boot.X** boot loader code  
-**PIC24_user_blink.X** led blink code of user application that also uses timer interrupt function.
+Several MPLAB X projects are included.
+
+**PIC24_boot.X** - boot loader code.  
+**PIC24_user_led_blink.X** - led blink code using timer interrupt.  
+**PIC24_user_uart_buffer.X** - UART receive and transmit code using receive buffer to store received line and circular transmit buffer to send characters. Received line is changed to uppercase letters for transmitting.
 
 There are some differences in how interrupt vectors are arranged comparing to original PIC24 Bully boot loader. This frees two more pages for user code. It also makes this version not compatible with original PIC24 Bully boot loader PC utility as original version will not upload user code below address 0xC00.
 
