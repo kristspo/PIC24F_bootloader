@@ -1,0 +1,26 @@
+{
+    "env": {
+        // "xc16BasePath" : "/opt/microchip/xc16/",
+        "xc16BasePath": "C:\\Program Files\\Microchip\\xc16\\",
+        "xc16Version": "v2.10"
+    },
+    "configurations": [
+        {
+            "name": "PIC24",
+            "browse": {
+                "path": [],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "${xc16BasePath}${xc16Version}/include",
+                "${xc16BasePath}${xc16Version}/support/generic/h",
+                "${xc16BasePath}${xc16Version}/support/PIC24F/h"
+            ],
+            "intelliSenseMode": "gcc-x64",
+            "defines": [
+                "__PIC24F16KA301__"
+            ]
+        }
+    ],
+    "version": 4
+}
