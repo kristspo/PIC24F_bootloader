@@ -5,6 +5,7 @@ Several MPLAB X projects are included.
 
 **PIC24_boot.X** - boot loader code.  
 **PIC24_user_led_blink.X** - led blink code using timer interrupt.  
+**PIC24_user_pin_test.X** - tests all pins on development board in sequential pattern by setting each pin as output high, low, open drain and input with pull up and pull down.  
 **PIC24_user_uart_buffer.X** - UART receive and transmit code using receive buffer to store received line and circular transmit buffer to send characters. Received line is changed to uppercase letters for transmitting.
 
 There are some differences in how interrupt vectors are arranged comparing to original PIC24 Bully boot loader. This frees two more pages for user code. It also makes this version not compatible with original PIC24 Bully boot loader PC utility as original version will not upload user code below address 0xC00.
